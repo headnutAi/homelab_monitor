@@ -1,6 +1,8 @@
-from datetime import datetime
 from dataclasses import dataclass, field
+from datetime import datetime
+
 import psutil
+
 
 @dataclass
 class Metrics:
