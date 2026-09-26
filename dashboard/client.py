@@ -1,7 +1,8 @@
 from datetime import datetime
 
 import requests
-from agent.collector import Metrics, collect_metrics
+
+from agent.collector import Metrics
 
 DEFAULT_URL = "http://localhost:8000"
 
