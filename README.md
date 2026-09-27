@@ -105,11 +105,12 @@ homelab-monitor/
 
 - [x] Metrik-Erfassung mit Dataclass-Modell
 - [x] FastAPI-Endpoint
-- [ ] Dashboard-Client
-- [ ] Live-Anzeige im Terminal (`rich`)
-- [ ] Deployment als `systemd`-Service
-- [ ] Absicherung des Endpoints (API-Key)
+- [x] Dashboard-Client
+- [x] Live-Anzeige im Terminal (`rich`)
+- [x] Absicherung des Endpoints (API-Key)
 - [ ] Persistenz der Messwerte
+- [ ] Deployment als `systemd`-Service
+
 
 ## Hinweis zur Sicherheit
 
