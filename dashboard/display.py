@@ -1,5 +1,6 @@
 import time
-from rich.console import Console
+
+from requests import RequestException
 from rich.live import Live
 from rich.table import Table
 
@@ -27,7 +28,7 @@ def run(refresh_seconds: float = 2.0):
                 results = fetch_metrics()
                 live.update(build_table(results))
                 time.sleep(refresh_seconds)
-            except Exception as e:
+            except RequestException as e:
                 live.console.print(f"Failed: {e}")
 
 

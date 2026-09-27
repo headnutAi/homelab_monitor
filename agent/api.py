@@ -1,9 +1,10 @@
 import os
 import secrets
 
+from dotenv import load_dotenv
 from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.security import APIKeyHeader
-from dotenv import load_dotenv
+
 from agent.collector import collect_metrics
 
 load_dotenv("apiKey.env")

@@ -1,8 +1,9 @@
-from datetime import datetime
 import os
+from datetime import datetime
+
 import requests
 from dotenv import load_dotenv
-import requests
+
 from agent.collector import Metrics
 
 load_dotenv("apiKey.env")
