@@ -2,28 +2,24 @@ import os
 import secrets
 
 from fastapi import Depends, FastAPI, HTTPException, status
-from fastapi.openapi.models import APIKey
 from fastapi.security import APIKeyHeader
-
+from dotenv import load_dotenv
 from agent.collector import collect_metrics
 
+load_dotenv("apiKey.env")
 API_KEY = os.getenv("MONITOR_API_KEY")
+
+if not API_KEY:
+    raise RuntimeError("API key is missing")
+
 api_key_header = APIKeyHeader(name="X-API-Key")
 
 app = FastAPI()
 
 
 def verify_api_key(key: str = Depends(api_key_header)):
-
-
-    """TODO 1: Vergleiche key mit API_KEY.
-
-    - Bei Nichtübereinstimmung: HTTPException werfen mit
-      status_code=status.HTTP_401_UNAUTHORIZED
-    - Zum Vergleich secrets.compare_digest(key, API_KEY) nutzen,
-      nicht ==
-    """
-    pass
+    if not secrets.compare_digest(key, API_KEY):
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
 
 
 @app.get("/metrics", dependencies=[Depends(verify_api_key)])
