@@ -91,13 +91,15 @@ Anschließend erreichbar unter:
 ```
 homelab-monitor/
 ├── agent/
-│   ├── __init__.py
+│   |
 │   ├── collector.py      # sammelt Metriken (psutil)
 │   └── api.py            # stellt sie als JSON bereit (FastAPI)
 ├── dashboard/
 │   ├── client.py         # fragt den Agent ab
 │   └── display.py        # Darstellung
 ├── requirements.txt
+├── requirements-dev.txt
+├── apiKey.env
 └── README.md
 ```
 
