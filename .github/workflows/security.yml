@@ -16,3 +16,19 @@ jobs:
           fetch-depth: 0
       - name: gitleaks ausführen
         uses: gitleaks/gitleaks-action@v2
+  dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code auschecken
+        uses: actions/checkout@v4
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: pip-audit installieren
+        run: pip install pip-audit
+
+      - name: dependencies scannen
+        run: pip-audit -r requirements.txt
