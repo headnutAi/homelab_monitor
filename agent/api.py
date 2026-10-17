@@ -9,13 +9,14 @@ from agent.collector import collect_metrics
 
 load_dotenv("apiKey.env")
 API_KEY = os.getenv("MONITOR_API_KEY")
+DEBUG = os.getenv("MONITOR_DEBUG") == "1"
 
 if not API_KEY:
     raise RuntimeError("API key is missing")
 
 api_key_header = APIKeyHeader(name="X-API-Key")
 
-app = FastAPI()
+app = FastAPI(openapi_url="/openapi.json" if DEBUG else None)
 
 
 def verify_api_key(key: str = Depends(api_key_header)):
