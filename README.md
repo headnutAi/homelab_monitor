@@ -90,6 +90,10 @@ Anschließend erreichbar unter:
 
 ```
 homelab-monitor/
+├── .github/
+│   └── workflows
+│       ├──ci.yml
+│       └──security.yml
 ├── agent/
 │   |
 │   ├── collector.py      # sammelt Metriken (psutil)
@@ -112,11 +116,6 @@ homelab-monitor/
 - [x] Absicherung des Endpoints (API-Key)
 - [ ] Persistenz der Messwerte
 - [ ] Deployment als `systemd`-Service
-
-
-## Hinweis zur Sicherheit
-
-Der Agent ist aktuell **nicht authentifiziert** und sollte ausschließlich in einem vertrauenswürdigen lokalen Netzwerk betrieben werden. Eine Absicherung des Endpoints steht auf der Roadmap.
 
 ---
 
