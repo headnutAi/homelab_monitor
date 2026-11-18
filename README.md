@@ -10,9 +10,13 @@
 
 ## Über das Projekt
 
-`homelab-monitor` überwacht die Auslastung eines selbst gehosteten Ubuntu-Servers. Statt einer schwergewichtigen Monitoring-Suite (Prometheus, Grafana & Co.) verfolgt dieses Projekt einen bewusst minimalen Ansatz: ein kleiner Agent auf dem Server, ein schlanker Client auf dem Rechner davor.
+`homelab-monitor` überwacht die Auslastung eines selbst gehosteten Ubuntu-Servers. Statt einer schwergewichtigen Monitoring-Suite (Prometheus, Grafana & Co.) verfolgt dieses Projekt einen bewusst minimalen Ansatz: ein kleiner Agent auf dem Server, ein schlanker Client auf dem Rechner davor. Dass hängt primär damit zusammen das für eine schwergewichtige Monitoring-Suite nicht genug RAM vorhanden ist.
 
 Entstanden als Teil meines [secure-homelab](https://github.com/headnutAi/secure-homelab)-Setups.
+
+## Über die Sicherheit
+
+Der Agent ist aus dem Internet nicht erreichbar, sondern nur aus dem Tailnet und somit nur von Geräten innerhalb des Tailnets. Außerdem benötigt jede Anfrage einen zusätzlichen API-Key.
 
 ## Architektur
 
@@ -26,7 +30,7 @@ Entstanden als Teil meines [secure-homelab](https://github.com/headnutAi/secure-
        psutil                                              rich
 ```
 
-Der **Agent** läuft auf dem zu überwachenden Server und stellt die Metriken über einen HTTP-Endpoint bereit. Das **Dashboard** kann auf einem beliebigen Gerät im Netzwerk laufen und fragt den Endpoint zyklisch ab.
+Der **Agent** läuft auf dem zu überwachenden Server und stellt die Metriken über einen HTTP-Endpoint bereit. Das **Dashboard** kann von einem Gerät innerhalb des Tailnets erreicht werden und man kann so die Daten abfragen.
 
 ## Features
 
